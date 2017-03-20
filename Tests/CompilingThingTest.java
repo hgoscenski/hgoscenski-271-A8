@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,7 +9,7 @@ class CompilingThingTest {
     @Test
     void getResults() {
         CompilingThing c = new CompilingThing("a + b");
-        assertEquals("This is the results table\n" +
+        assertEquals("\nResults: a + b\n" +
                 "------------------------------------------\n" +
                 "Operator | Operand 1 | Operand 2 | Result\n " +
                 "   +    |     b     |     a     |   z\n", c.getResults());

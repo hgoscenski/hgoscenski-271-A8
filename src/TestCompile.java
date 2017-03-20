@@ -38,6 +38,18 @@ Options for input from string:
                         -compare precendence pf input to current stack
                             ...
                                 -push input to stack
+
+        This is how the results will look:
+
+        Results: a + b * c - d / e + f * g
+        ------------------------------------------
+        Operator | Operand 1 | Operand 2 | Result
+            *    |     c     |     b     |   z
+            +    |     z     |     a     |   y
+            /    |     e     |     d     |   x
+            -    |     x     |     y     |   w
+            *    |     g     |     f     |   v
+            +    |     v     |     w     |   u
  */
 
 public class TestCompile {
@@ -48,10 +60,13 @@ public class TestCompile {
         String testInput3 = "a ++ b";
         String testInput4 = "aa + b";
         String testInput5 = "a = b";
+        CompilingThing compiler2;
 
-        testInput2 = testInput2.replaceAll(" ", "");
-        CompilingThing compiler2 = new CompilingThing(testInput2);
+        String[] testStrings = {testInput0,testInput1,testInput2,testInput3, testInput4, testInput5};
 
-        System.out.println(compiler2.getResults());
+        for (String test:testStrings) {
+            compiler2 = new CompilingThing(test);
+            System.out.println(compiler2.getResults());
+        }
     }
 }

@@ -12,14 +12,13 @@ public class CompilingThing {
             new ArrayList(Arrays.asList('*','/','+','-'));
     final ArrayDeque<Character> operandsAndResults =
             new ArrayDeque<>(Arrays.asList('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'));
-//    private Stack<Character> resultVars;
     private Stack<Character> operandStack;
     private Stack<Character> operatorStack;
 
 
     public CompilingThing(String input) {
         this.input = input;
-        resultsTable = "Results:\n" +
+        resultsTable = "\nResults: " + input + "\n" +
                        "------------------------------------------\n" +
                        "Operator | Operand 1 | Operand 2 | Result\n";
         operandStack = new Stack<Character>();
@@ -35,7 +34,7 @@ public class CompilingThing {
             checkString(workingInput);
         } catch (InputNotValid e){
             System.out.println(e);
-            System.exit(2);
+            return;
         }
         char[] inputArray = workingInput.toCharArray();
         sizeOfInputString = inputArray.length;
@@ -152,7 +151,7 @@ public class CompilingThing {
         // Voodoo regex's to filter out bad things.
         // Also tells you that you did something wrong.
         // I'm not assuming you did, but if you are seeing any of these, you did.
-        
+
         input = input.replaceAll(" ","");
         if(!input.matches("((([a-z]{1})[*/+-]{1})+[a-z]{1})")){
             if(input.matches(".*[/*+\\-]")) {
